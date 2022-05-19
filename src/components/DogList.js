@@ -1,10 +1,12 @@
 import React from "react";
 import Dog from "./Dog"
 
-function DogList({ dogs, setSelectedDog }) {  
+function DogList({ dogs, setSelectedDog, isFiltered }) {  
 
   const renderDogs = () => {
-    return dogs.map(dog => {
+    const goodDogs = dogs.filter(dog => dog.isGoodDog)
+    const selectedDogs = isFiltered ? [...goodDogs] : [...dogs]
+    return selectedDogs.map(dog => {
       return <Dog key={dog.id} dog={dog} setSelectedDog={setSelectedDog}/>
     })
   }
