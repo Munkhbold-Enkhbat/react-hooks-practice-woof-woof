@@ -12,16 +12,15 @@ function App() {
       .then(dogsData => setDogs(dogsData))
   }, [])
 
-  // console.log(dogs);
+  console.log(selectedDog);
   const renderSelectedDogInfo = () => {
-    console.log(selectedDog);
-    // return (
-    //   <>
-    //     <img src={selectedDog.image} alt={selectedDog.name}/>
-    //     <h2>{selectedDog.name}</h2>
-    //     <button>{selectedDog.isGoodDog}</button>
-    //   </>
-    // )
+    return (
+      <>
+        <img src={selectedDog.image} alt={selectedDog.name}/>
+        <h2>{selectedDog.name}</h2>
+        <button>{selectedDog.isGoodDog ? "Good Dog!" : "Bad Dog!"}</button>
+      </>
+    )
   }
 
   return (
@@ -35,7 +34,7 @@ function App() {
       <div id="dog-summary-container">
         <h1>DOGGO:</h1>
         <div id="dog-info">
-          {renderSelectedDogInfo}
+          {selectedDog ? renderSelectedDogInfo() : null}
         </div>
       </div>
     </div>
